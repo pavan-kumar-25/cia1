@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<style>
+    body {
+        background: url("./back.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        justify-content: center;
+        text-align: center;
+        padding-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'ApR8YZ_Tyb5zPfCBVkh4c1MTSyijoxT-IofWGucyhEKsCvaw1yM0-sIQ_FmXpxHF'
+        });
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log("inn")
+            var loc = new Microsoft.Maps.Location(
+                position.coords.latitude,
+                position.coords.longitude);    
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);    
+            map.setView({ center: loc, zoom: 15 });
+        });
+    }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+
+
+
+    <div id="myMap" class="relative " style="height: 70vh; width: 70vw;top: 2px;left: 150px;"></div>
+</body>
+</html>
